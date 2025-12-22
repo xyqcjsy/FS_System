@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.system.mapper.PurchaseOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.fs.system.entity.PurchaseOrder">
+        <id column="id" property="id"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="supplier_id" property="supplierId"/>
+        <result column="order_date" property="orderDate"/>
+        <result column="total_amount" property="totalAmount"/>
+        <result column="tax_amount" property="taxAmount"/>
+        <result column="discount_amount" property="discountAmount"/>
+        <result column="final_amount" property="finalAmount"/>
+        <result column="status" property="status"/>
+        <result column="payment_method" property="paymentMethod"/>
+        <result column="payment_date" property="paymentDate"/>
+        <result column="is_posted" property="isPosted"/>
+        <result column="posted_at" property="postedAt"/>
+        <result column="remark" property="remark"/>
+        <result column="supplier_name" property="supplierName"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT po.*, s.supplier_name 
+        FROM biz_purchase_order po
+        LEFT JOIN base_supplier s ON po.supplier_id = s.id
+        ORDER BY po.order_date DESC, po.id DESC
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT po.*, s.supplier_name 
+        FROM biz_purchase_order po
+        LEFT JOIN base_supplier s ON po.supplier_id = s.id
+        WHERE po.id = #{id}
+    </select>
+
+    <select id="selectUnposted" resultMap="BaseResultMap">
+        SELECT po.*, s.supplier_name 
+        FROM biz_purchase_order po
+        LEFT JOIN base_supplier s ON po.supplier_id = s.id
+        WHERE po.is_posted = 0 AND po.status = 'Confirmed'
+        ORDER BY po.order_date DESC
+    </select>
+
+    <select id="selectByCondition" resultMap="BaseResultMap">
+        SELECT po.*, s.supplier_name 
+        FROM biz_purchase_order po
+        LEFT JOIN base_supplier s ON po.supplier_id = s.id
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND (po.order_no LIKE CONCAT('%', #{keyword}, '%') 
+                OR s.supplier_name LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="status != null and status != ''">
+                AND po.status = #{status}
+            </if>
+        </where>
+        ORDER BY po.order_date DESC, po.id DESC
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO biz_purchase_order (order_no, supplier_id, order_date, total_amount, tax_amount,
+        discount_amount, final_amount, status, payment_method, payment_date, remark)
+        VALUES (#{orderNo}, #{supplierId}, #{orderDate}, #{totalAmount}, #{taxAmount},
+        #{discountAmount}, #{finalAmount}, #{status}, #{paymentMethod}, #{paymentDate}, #{remark})
+    </insert>
+
+    <update id="update">
+        UPDATE biz_purchase_order
+        SET supplier_id = #{supplierId},
+            order_date = #{orderDate},
+            total_amount = #{totalAmount},
+            tax_amount = #{taxAmount},
+            discount_amount = #{discountAmount},
+            final_amount = #{finalAmount},
+            status = #{status},
+            payment_method = #{paymentMethod},
+            payment_date = #{paymentDate},
+            remark = #{remark}
+        WHERE id = #{id}
+    </update>
+    
+    <update id="updateStatus">
+        UPDATE biz_purchase_order
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <update id="markAsPosted">
+        UPDATE biz_purchase_order
+        SET is_posted = 1, posted_at = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM biz_purchase_order WHERE id = #{id}
+    </delete>
+
+</mapper>
+

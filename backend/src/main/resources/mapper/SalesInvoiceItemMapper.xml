@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.system.mapper.SalesInvoiceItemMapper">
+
+    <insert id="batchInsert">
+        INSERT INTO biz_sales_invoice_item (invoice_id, item_name, specification, unit, quantity,
+        unit_price, amount, tax_rate, remark)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.invoiceId}, #{item.itemName}, #{item.specification}, #{item.unit}, #{item.quantity},
+            #{item.unitPrice}, #{item.amount}, #{item.taxRate}, #{item.remark})
+        </foreach>
+    </insert>
+
+</mapper>
+

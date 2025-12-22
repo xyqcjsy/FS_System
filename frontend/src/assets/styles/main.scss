@@ -1,0 +1,497 @@
+// ==========================================
+// 金蝶风格 - 全局样式
+// ==========================================
+
+// 导入字体
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+// 华康金刚黑 - 如果没有本地字体，使用替代方案
+@font-face {
+  font-family: 'HK Jingang';
+  src: local('DFPJinGangHei-B5'), local('HK Jingang'), local('华康金刚黑');
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+// 导入业务模块通用样式
+@import './business-common.scss';
+
+// CSS变量定义
+:root {
+  // 主题色 - 金蝶蓝
+  --primary-color: #0052CC;
+  --primary-light: #2684FF;
+  --primary-dark: #003D99;
+  
+  // 辅助色
+  --success-color: #00875A;
+  --warning-color: #FF991F;
+  --danger-color: #DE350B;
+  --info-color: #0065FF;
+  
+  // 中性色
+  --text-primary: #172B4D;
+  --text-secondary: #6B778C;
+  --text-disabled: #A5ADBA;
+  
+  // 背景色
+  --bg-body: #F4F5F7;
+  --bg-card: #FFFFFF;
+  --bg-sidebar: linear-gradient(180deg, #001E3C 0%, #003366 100%);
+  
+  // 边框和阴影
+  --border-color: #DFE1E6;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  
+  // 圆角 - 统一使用
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+// 全局样式
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  // 英文使用 Inter，中文使用华康金刚黑
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary);
+  background-color: var(--bg-body);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+// 中文字体单独设置
+:lang(zh),
+:lang(zh-CN),
+:lang(zh-TW) {
+  font-family: 'HK Jingang', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 
+               'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+// ==========================================
+// 滚动条样式 - 精致现代
+// ==========================================
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 82, 204, 0.3) 0%, rgba(0, 82, 204, 0.6) 100%);
+  border-radius: 3px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0, 82, 204, 0.5) 0%, rgba(0, 82, 204, 0.8) 100%);
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 3px;
+}
+
+// ==========================================
+// Element Plus 组件样式覆盖
+// ==========================================
+
+// 表格样式优化 - 金蝶风格
+.el-table {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  
+  .el-table__header-wrapper {
+    th {
+      background: linear-gradient(180deg, #F7F9FC 0%, #EDF1F7 100%);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 14px;
+      border-bottom: 2px solid var(--primary-color);
+    }
+  }
+  
+  .el-table__body-wrapper {
+    .el-table__row {
+      transition: all 0.3s;
+      
+      &:hover {
+        background-color: #F4F8FF !important;
+      }
+    }
+  }
+  
+  .el-table__cell {
+    padding: 14px 0;
+  }
+}
+
+// 卡片样式
+.el-card {
+  border-radius: var(--radius-md);
+  border: none;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s;
+  
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  
+  .el-card__header {
+    border-bottom: 2px solid var(--bg-body);
+    background: linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%);
+    padding: 16px 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .el-card__body {
+    padding: 20px;
+  }
+}
+
+// 按钮样式增强
+.el-button {
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  transition: all 0.3s;
+  letter-spacing: 0.3px;
+  
+  &--primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border: none;
+    
+    &:hover {
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+    }
+  }
+  
+  &--success {
+    background: linear-gradient(135deg, var(--success-color) 0%, #00A870 100%);
+    border: none;
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 135, 90, 0.3);
+    }
+  }
+  
+  &--danger {
+    background: linear-gradient(135deg, var(--danger-color) 0%, #FF5630 100%);
+    border: none;
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(222, 53, 11, 0.3);
+    }
+  }
+  
+  // 链接按钮美化 - 用于表格操作
+  &--link {
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 14px;
+    
+    &.el-button--primary {
+      background: rgba(0, 82, 204, 0.06);
+      color: var(--primary-color);
+      
+      &:hover {
+        background: rgba(0, 82, 204, 0.12);
+        transform: none;
+      }
+    }
+    
+    &.el-button--success {
+      background: rgba(0, 135, 90, 0.06);
+      color: var(--success-color);
+      
+      &:hover {
+        background: rgba(0, 135, 90, 0.12);
+        transform: none;
+      }
+    }
+    
+    &.el-button--danger {
+      background: rgba(222, 53, 11, 0.06);
+      color: var(--danger-color);
+      
+      &:hover {
+        background: rgba(222, 53, 11, 0.12);
+        transform: none;
+      }
+    }
+    
+    &.el-button--warning {
+      background: rgba(255, 153, 31, 0.06);
+      color: var(--warning-color);
+      
+      &:hover {
+        background: rgba(255, 153, 31, 0.12);
+        transform: none;
+      }
+    }
+  }
+}
+
+// 输入框样式
+.el-input__wrapper {
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  
+  &.is-focus {
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+  }
+}
+
+// 标签样式
+.el-tag {
+  border-radius: 12px;
+  padding: 4px 12px;
+  font-weight: 500;
+  border: none;
+}
+
+// ==========================================
+// 通用组件样式
+// ==========================================
+
+// 页面容器
+.app-container {
+  padding: 0;
+  
+  .el-card {
+    margin-bottom: 20px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// 卡片头部样式
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  span {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    
+    .el-icon {
+      margin-right: 8px;
+      color: var(--primary-color);
+    }
+  }
+  
+  .el-button {
+    margin-left: 10px;
+  }
+}
+
+// 搜索表单样式
+.search-form {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  
+  .el-form-item {
+    margin-bottom: 0;
+    margin-right: 16px;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  .el-input,
+  .el-select {
+    width: 200px;
+  }
+}
+
+// 按钮组样式
+.button-group {
+  margin-bottom: 20px;
+  
+  .el-button {
+    margin-right: 10px;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// 表单样式
+.form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  
+  .el-form-item__label {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+}
+
+// 分页样式
+.el-pagination {
+  margin-top: 20px;
+  justify-content: flex-end;
+  
+  .el-pager li {
+    border-radius: var(--radius-sm);
+    
+    &.is-active {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+      color: white;
+    }
+  }
+}
+
+// 表格操作按钮统一样式
+.el-table {
+  .el-table__cell {
+    // 操作列按钮组
+    .table-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// 状态标签增强
+.el-tag {
+  &.el-tag--info {
+    background: linear-gradient(135deg, #E3E8EF 0%, #F0F3F7 100%);
+    color: var(--text-secondary);
+  }
+  
+  &.el-tag--primary {
+    background: linear-gradient(135deg, #CCE0FF 0%, #E6F2FF 100%);
+    color: var(--primary-color);
+  }
+  
+  &.el-tag--success {
+    background: linear-gradient(135deg, #C3F0DB 0%, #E5F8EF 100%);
+    color: var(--success-color);
+  }
+  
+  &.el-tag--warning {
+    background: linear-gradient(135deg, #FFE4CC 0%, #FFF2E5 100%);
+    color: var(--warning-color);
+  }
+  
+  &.el-tag--danger {
+    background: linear-gradient(135deg, #FFD6CC 0%, #FFE9E5 100%);
+    color: var(--danger-color);
+  }
+}
+
+// 对话框样式
+.el-dialog {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  
+  .el-dialog__header {
+    background: linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%);
+    border-bottom: 2px solid var(--bg-body);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: 20px 24px;
+    flex-shrink: 0;
+    
+    .el-dialog__title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  }
+  
+  .el-dialog__body {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+    max-height: calc(90vh - 180px);
+    
+    // 优化滚动体验
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 82, 204, 0.3);
+      border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.02);
+    }
+  }
+  
+  .el-dialog__footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+    background: #FFFFFF;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+}
+
+// 确保对话框内容区域可以滚动
+.el-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 描述列表样式
+.el-descriptions {
+  .el-descriptions__header {
+    margin-bottom: 16px;
+    
+    .el-descriptions__title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  }
+  
+  .el-descriptions__label {
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  
+  .el-descriptions__content {
+    color: var(--text-primary);
+  }
+}
+

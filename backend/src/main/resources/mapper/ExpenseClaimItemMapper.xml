@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.system.mapper.ExpenseClaimItemMapper">
+
+    <insert id="batchInsert">
+        INSERT INTO biz_expense_claim_item (claim_id, expense_type, expense_date, amount,
+        description, attachment_url, remark)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.claimId}, #{item.expenseType}, #{item.expenseDate}, #{item.amount},
+            #{item.description}, #{item.attachmentUrl}, #{item.remark})
+        </foreach>
+    </insert>
+
+</mapper>
+

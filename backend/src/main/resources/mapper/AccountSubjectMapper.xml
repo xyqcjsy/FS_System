@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.system.mapper.AccountSubjectMapper">
+    
+    <!-- 树形查询（递归查询所有子节点） -->
+    <select id="selectTree" resultType="com.fs.system.entity.AccountSubject">
+        WITH RECURSIVE subject_tree AS (
+            SELECT * FROM acct_subject WHERE parent_id = #{parentId}
+            UNION ALL
+            SELECT s.* FROM acct_subject s
+            INNER JOIN subject_tree st ON s.parent_id = st.id
+        )
+        SELECT * FROM subject_tree ORDER BY subject_code
+    </select>
+    
+</mapper>
+

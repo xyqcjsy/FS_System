@@ -1,0 +1,167 @@
+// ==========================================
+// 业务模块通用样式
+// ==========================================
+
+// 业务页面容器
+.business-container {
+  // 头部卡片
+  .header-card {
+    margin-bottom: 20px;
+    
+    :deep(.el-card__header) {
+      background: linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%);
+      
+      .card-header {
+        span {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          
+          .el-icon {
+            font-size: 20px;
+            color: var(--primary-color);
+          }
+        }
+      }
+    }
+  }
+  
+  // 搜索表单
+  .search-form {
+    :deep(.el-form-item__label) {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    
+    :deep(.el-input),
+    :deep(.el-select) {
+      .el-input__wrapper {
+        border-radius: var(--radius-sm);
+      }
+    }
+  }
+  
+  // 表格操作按钮
+  :deep(.el-table) {
+    // 操作列
+    .el-table__cell {
+      .el-button--link {
+        min-width: 60px;
+        margin: 0 3px;
+      }
+    }
+  }
+}
+
+// 对话框通用样式
+.business-dialog {
+  :deep(.el-dialog) {
+    border-radius: var(--radius-lg);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    
+    .el-dialog__header {
+      background: linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      flex-shrink: 0;
+      
+      .el-dialog__title {
+        font-weight: 600;
+        font-size: 18px;
+      }
+    }
+    
+    .el-dialog__body {
+      overflow-y: auto;
+      flex: 1;
+      max-height: calc(90vh - 180px);
+    }
+    
+    .el-dialog__footer {
+      flex-shrink: 0;
+    }
+  }
+  
+  // 表单样式
+  .el-form {
+    .el-form-item {
+      margin-bottom: 20px;
+      
+      .el-form-item__label {
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+    }
+    
+    .el-input-number {
+      width: 100%;
+    }
+  }
+  
+  // 明细表格
+  .detail-table {
+    margin: 16px 0;
+    
+    .el-input-number,
+    .el-input,
+    .el-date-picker,
+    .el-select {
+      width: 100%;
+    }
+  }
+  
+  // 总额显示
+  .total-amount {
+    text-align: right;
+    padding: 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color);
+    border-top: 2px solid var(--border-color);
+    
+    span {
+      font-size: 20px;
+      font-family: 'Inter', 'SF Pro Display', monospace;
+    }
+  }
+  
+  // 操作按钮组
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    
+    .el-button {
+      flex: 1;
+    }
+  }
+}
+
+// 查看详情对话框
+.view-dialog {
+  :deep(.el-descriptions) {
+    .el-descriptions__label {
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%);
+    }
+    
+    .el-descriptions__content {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+  }
+  
+  .el-divider {
+    margin: 24px 0;
+    
+    .el-divider__text {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  }
+}
+

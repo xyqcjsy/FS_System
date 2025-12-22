@@ -1,0 +1,52 @@
+#以后修改代码后，可以使用以下命令更新到 GitHub
+#cd X:\FS_System
+#git add .
+#git commit -m "描述您的修改"
+#git push
+
+# Java 编译产物
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# 前端构建产物
+frontend/dist/
+
+# 日志文件
+logs/
+*.log
+*.gz
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*~
+
+# API 响应文件（临时测试文件）
+api_response.json
+
+# 编译输出
+*.class
+out/
+build/

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.system.mapper.ExpenseClaimMapper">
+
+    <resultMap id="BaseResultMap" type="com.fs.system.entity.ExpenseClaim">
+        <id column="id" property="id"/>
+        <result column="claim_no" property="claimNo"/>
+        <result column="employee_id" property="employeeId"/>
+        <result column="claim_date" property="claimDate"/>
+        <result column="total_amount" property="totalAmount"/>
+        <result column="status" property="status"/>
+        <result column="payment_date" property="paymentDate"/>
+        <result column="is_posted" property="isPosted"/>
+        <result column="posted_at" property="postedAt"/>
+        <result column="remark" property="remark"/>
+        <result column="employee_name" property="employeeName"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+</mapper>
+

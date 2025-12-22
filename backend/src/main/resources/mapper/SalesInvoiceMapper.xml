@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.system.mapper.SalesInvoiceMapper">
+
+    <resultMap id="BaseResultMap" type="com.fs.system.entity.SalesInvoice">
+        <id column="id" property="id"/>
+        <result column="invoice_no" property="invoiceNo"/>
+        <result column="customer_id" property="customerId"/>
+        <result column="invoice_date" property="invoiceDate"/>
+        <result column="total_amount" property="totalAmount"/>
+        <result column="tax_amount" property="taxAmount"/>
+        <result column="discount_amount" property="discountAmount"/>
+        <result column="final_amount" property="finalAmount"/>
+        <result column="status" property="status"/>
+        <result column="payment_method" property="paymentMethod"/>
+        <result column="payment_date" property="paymentDate"/>
+        <result column="is_posted" property="isPosted"/>
+        <result column="posted_at" property="postedAt"/>
+        <result column="remark" property="remark"/>
+        <result column="customer_name" property="customerName"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+</mapper>
+

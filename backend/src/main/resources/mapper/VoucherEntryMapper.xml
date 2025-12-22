@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.system.mapper.VoucherEntryMapper">
+
+    <insert id="batchInsert">
+        INSERT INTO acct_voucher_entry (voucher_id, line_number, subject_id, debit_amount,
+        credit_amount, abstract, auxiliary_info)
+        VALUES
+        <foreach collection="list" item="entry" separator=",">
+            (#{entry.voucherId}, #{entry.lineNumber}, #{entry.subjectId}, #{entry.debitAmount},
+            #{entry.creditAmount}, #{entry.abstractText}, #{entry.auxiliaryInfo})
+        </foreach>
+    </insert>
+
+</mapper>
+

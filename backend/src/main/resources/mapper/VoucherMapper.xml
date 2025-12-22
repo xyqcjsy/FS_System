@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.system.mapper.VoucherMapper">
+    
+    <!-- 结果映射 -->
+    <resultMap id="voucherResultMap" type="com.fs.system.entity.Voucher">
+        <id property="id" column="id"/>
+        <result property="voucherNo" column="voucher_no"/>
+        <result property="voucherDate" column="voucher_date"/>
+        <result property="voucherType" column="voucher_type"/>
+        <result property="sourceType" column="source_type"/>
+        <result property="sourceId" column="source_id"/>
+        <result property="totalDebit" column="total_debit"/>
+        <result property="totalCredit" column="total_credit"/>
+        <result property="status" column="status"/>
+        <result property="postedAt" column="posted_at"/>
+        <result property="abstractText" column="abstract"/>
+        <result property="remark" column="remark"/>
+        <result property="createdBy" column="created_by"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+    
+    <!-- 查询所有凭证 -->
+    <select id="selectAll" resultMap="voucherResultMap">
+        SELECT * FROM acct_voucher ORDER BY voucher_date DESC, id DESC
+    </select>
+    
+    <!-- 根据ID查询凭证 -->
+    <select id="selectById" resultMap="voucherResultMap">
+        SELECT * FROM acct_voucher WHERE id = #{id}
+    </select>
+    
+    <!-- 根据来源查询凭证 -->
+    <select id="selectBySource" resultMap="voucherResultMap">
+        SELECT * FROM acct_voucher WHERE source_type = #{sourceType} AND source_id = #{sourceId}
+    </select>
+    
+    <!-- 查询凭证列表（包含关联信息） -->
+    <select id="selectByCondition" resultMap="voucherResultMap">
+        SELECT * FROM acct_voucher
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND (voucher_no LIKE CONCAT('%', #{keyword}, '%')
+                OR abstract LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="startDate != null and startDate != ''">
+                AND voucher_date &gt;= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != ''">
+                AND voucher_date &lt;= #{endDate}
+            </if>
+        </where>
+        ORDER BY voucher_date DESC, id DESC
+    </select>
+    
+    <!-- 更新凭证 -->
+    <update id="update">
+        UPDATE acct_voucher 
+        SET voucher_no = #{voucherNo},
+            voucher_date = #{voucherDate},
+            voucher_type = #{voucherType},
+            total_debit = #{totalDebit},
+            total_credit = #{totalCredit},
+            status = #{status},
+            abstract = #{abstractText},
+            remark = #{remark}
+        WHERE id = #{id}
+    </update>
+    
+</mapper>
+
