@@ -1,13 +1,143 @@
-# FS_System - 系统分析与设计报告
+# FS_System - README
 
-**项目源码地址：[https://github.com/xyqcjsy/FS_System](https://github.com/xyqcjsy/FS_System)**
+项目源码地址：[https://github.com/xyqcjsy/FS_System](https://github.com/xyqcjsy/FS_System)
 
-**项目访问IP：[120.26.255.180](http://120.26.255.180/dashboard)**
+项目访问IP：[120.26.255.180](http://120.26.255.180/dashboard)
 
-![Java](https://img.shields.io/badge/Java-21-orange?style=flat&logo=openjdk&logoColor=white)![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen?style=flat&logo=springboot&logoColor=white)![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql&logoColor=white)![MyBatis](https://img.shields.io/badge/MyBatis-3.5-C60F2F?style=flat&logo=mybatis&logoColor=white)![Maven](https://img.shields.io/badge/Maven-3.6.3-C71A36?style=flat&logo=apachemaven&logoColor=white)![Lombok](https://img.shields.io/badge/Lombok-1.18-BC4521?style=flat&logo=lombok&logoColor=white)
-![Vue](https://img.shields.io/badge/Vue.js-3.4.0-4FC08D?style=flat&logo=vuedotjs&logoColor=white)![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=flat&logo=vite&logoColor=white)![Element Plus](https://img.shields.io/badge/Element%20Plus-2.5-409EFF?style=flat&logo=elementplus&logoColor=white)![Pinia](https://img.shields.io/badge/Pinia-2.1-FFE066?style=flat&logo=pinia&logoColor=black)![Vue Router](https://img.shields.io/badge/Vue%20Router-4.2-35495E?style=flat&logo=vuerouter&logoColor=4FC08D)![Axios](https://img.shields.io/badge/Axios-1.6-5A29E4?style=flat&logo=axios&logoColor=white)
+![Java](https://img.shields.io/badge/Java-21-orange?style=flat&logo=openjdk&logoColor=white)  ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen?style=flat&logo=springboot&logoColor=white)  ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql&logoColor=white)  ![MyBatis](https://img.shields.io/badge/MyBatis-3.5-C60F2F?style=flat&logo=mybatis&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-3.6.3-C71A36?style=flat&logo=apachemaven&logoColor=white)  ![Lombok](https://img.shields.io/badge/Lombok-1.18-BC4521?style=flat&logo=lombok&logoColor=white)  ![Vue](https://img.shields.io/badge/Vue.js-3.4.0-4FC08D?style=flat&logo=vuedotjs&logoColor=white)  ![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=flat&logo=vite&logoColor=white)
+![Element Plus](https://img.shields.io/badge/Element%20Plus-2.5-409EFF?style=flat&logo=elementplus&logoColor=white)  ![Pinia](https://img.shields.io/badge/Pinia-2.1-FFE066?style=flat&logo=pinia&logoColor=black)  ![Vue Router](https://img.shields.io/badge/Vue%20Router-4.2-35495E?style=flat&logo=vuerouter&logoColor=4FC08D)  ![Axios](https://img.shields.io/badge/Axios-1.6-5A29E4?style=flat&logo=axios&logoColor=white)
 
-> **© CSU BS IMS 谢扬强**
+> © CSU BS IMS 谢扬强
+
+## 目录
+
+[一、项目愿景](#一项目愿景)
+
+[二、业务建模](#二业务建模)
+
+* [2.1 概述](#21-概述)
+* [2.2 业务角色](#22-业务角色)
+* [2.3 核心业务流程](#23-核心业务流程)
+    * [2.3.1 销售与收入确认流程](#231-销售与收入确认流程)
+    * [2.3.2 采购与应付流程](#232-采购与应付流程)
+    * [2.3.3 费用报销流程](#233-费用报销流程)
+    * [2.3.4 期末结转与报表生成](#234-期末结转与报表生成)
+* [2.4 关键业务规则](#24-关键业务规则)
+* [2.5 总体业务用例图](#25-总体业务用例图)
+
+[三、用例规约](#三用例规约)
+
+* [3.1 系统基础设置模块](#31-系统基础设置模块)
+    * [UC-SYS-01: 企业主体信息维护](#uc-sys-01-企业主体信息维护)
+    * [UC-SYS-02: 员工档案管理](#uc-sys-02-员工档案管理)
+    * [UC-SYS-03: 客户/供应商档案管理](#uc-sys-03-客户供应商档案管理)
+    * [UC-SYS-04: 会计科目体系配置](#uc-sys-04-会计科目体系配置)
+* [3.2 业务管理模块](#32-业务管理模块)
+    * [UC-BUS-01: 销售发票全流程](#uc-bus-01-销售发票全流程)
+    * [UC-BUS-02: 采购订单全流程](#uc-bus-02-采购订单全流程)
+    * [UC-BUS-03: 费用报销审批流](#uc-bus-03-费用报销审批流)
+* [3.3 总账会计核算模块](#33-总账会计核算模块)
+    * [UC-ACC-01: 业务智能过账](#uc-acc-01-业务智能过账)
+    * [UC-ACC-02: 凭证全生命周期管理](#uc-acc-02-凭证全生命周期管理)
+    * [UC-ACC-03: 银行/现金自动对账](#uc-acc-03-银行现金自动对账)
+    * [UC-ACC-04: 定期业务处理](#uc-acc-04-定期业务处理)
+    * [UC-ACC-05: 税务管理](#uc-acc-05-税务管理)
+* [3.4 财务报表模块](#34-财务报表模块)
+    * [UC-RPT-01: 资产负债表生成与导出](#uc-rpt-01-资产负债表生成与导出)
+    * [UC-RPT-02: 利润表生成与导出](#uc-rpt-02-利润表生成与导出)
+    * [UC-RPT-03: 现金流量表生成与导出](#uc-rpt-03-现金流量表生成与导出)
+
+[四、分析类图](#四分析类图)
+
+* [4.1 分析概览](#41-分析概览)
+* [4.2 系统分析类图](#42-系统分析类图)
+* [4.3 核心类详解](#43-核心类详解)
+    * [4.3.1 会计科目类 (AccountSubject)](#431-会计科目类-accountsubject)
+    * [4.3.2 凭证与分录类 (Voucher & VoucherEntry)](#432-凭证与分录类-voucher--voucherentry)
+    * [4.3.3 业务单据类 (Sales/Purchase/Expense)](#433-业务单据类-salespurchaseexpense)
+    * [4.3.4 过账与对账类](#434-过账与对账类)
+* [4.4 类间关系分析](#44-类间关系分析)
+
+[五、分析序列图](#五分析序列图)
+
+* [5.1 系统管理模块](#51-系统管理模块)
+    * [5.1.1 企业主体信息维护 (UC-SYS-01)](#511-企业主体信息维护-uc-sys-01)
+    * [5.1.2 员工档案管理 (UC-SYS-02)](#512-员工档案管理-uc-sys-02)
+    * [5.1.3 客户/供应商档案管理 (UC-SYS-03)](#513-客户供应商档案管理-uc-sys-03)
+    * [5.1.4 会计科目体系配置 (UC-SYS-04)](#514-会计科目体系配置-uc-sys-04)
+* [5.2 业务管理模块](#52-业务管理模块)
+    * [5.2.1 销售发票全流程 (UC-BUS-01)](#521-销售发票全流程-uc-bus-01)
+    * [5.2.2 采购订单全流程 (UC-BUS-02)](#522-采购订单全流程-uc-bus-02)
+    * [5.2.3 费用报销审批流 (UC-BUS-03)](#523-费用报销审批流-uc-bus-03)
+* [5.3 会计核算模块](#53-会计核算模块)
+    * [5.3.1 业务单据智能过账 (UC-ACC-01)](#531-业务单据智能过账-uc-acc-01)
+    * [5.3.2 凭证全生命周期管理 (UC-ACC-02)](#532-凭证全生命周期管理-uc-acc-02)
+    * [5.3.3 银行/现金自动对账 (UC-ACC-03)](#533-银行现金自动对账-uc-acc-03)
+    * [5.3.4 定期业务处理 (UC-ACC-04)](#534-定期业务处理-uc-acc-04)
+    * [5.3.5 税务管理 (UC-ACC-05)](#535-税务管理-uc-acc-05)
+* [5.4 财务报表模块](#54-财务报表模块)
+    * [5.4.1 资产负债表生成与导出 (UC-RPT-01)](#541-资产负债表生成与导出-uc-rpt-01)
+    * [5.4.2 利润表生成与导出 (UC-RPT-02)](#542-利润表生成与导出-uc-rpt-02)
+    * [5.4.3 现金流量表生成与导出 (UC-RPT-03)](#543-现金流量表生成与导出-uc-rpt-03)
+
+[六、数据库设计](#六数据库设计)
+
+* [6.1 数据库设计规范](#61-数据库设计规范)
+    * [6.1.1 设计策略](#611-设计策略)
+    * [6.1.2 命名规范](#612-命名规范)
+    * [6.1.3 数据库结构图](#613-数据库结构图)
+* [6.2 系统管理模块 (System Module)](#62-系统管理模块-system-module)
+    * [6.2.1 公司信息表 (sys_company)](#621-公司信息表-sys_company)
+    * [6.2.2 系统操作日志表 (sys_operation_log)](#622-系统操作日志表-sys_operation_log)
+* [6.3 基础档案模块 (Base Module)](#63-基础档案模块-base-module)
+    * [6.3.1 客户信息表 (base_customer)](#631-客户信息表-base_customer)
+    * [6.3.2 供应商信息表 (base_supplier)](#632-供应商信息表-base_supplier)
+    * [6.3.3 员工信息表 (base_employee)](#633-员工信息表-base_employee)
+* [6.4 业务管理模块 (Business Module)](#64-业务管理模块-business-module)
+    * [6.4.1 销售发票主表 (biz_sales_invoice)](#641-销售发票主表-biz_sales_invoice)
+    * [6.4.2 销售发票明细表 (biz_sales_invoice_item)](#642-销售发票明细表-biz_sales_invoice_item)
+    * [6.4.3 采购订单主表 (biz_purchase_order)](#643-采购订单主表-biz_purchase_order)
+    * [6.4.4 采购订单明细表 (biz_purchase_order_item)](#644-采购订单明细表-biz_purchase_order_item)
+    * [6.4.5 费用报销主表 (biz_expense_claim)](#645-费用报销主表-biz_expense_claim)
+    * [6.4.6 费用报销明细表 (biz_expense_claim_item)](#646-费用报销明细表-biz_expense_claim_item)
+* [6.5 会计核算模块 (Accounting Module)](#65-会计核算模块-accounting-module)
+    * [6.5.1 会计科目表 (acct_subject)](#651-会计科目表-acct_subject)
+    * [6.5.2 会计凭证主表 (acct_voucher)](#652-会计凭证主表-acct_voucher)
+    * [6.5.3 凭证分录表 (acct_voucher_entry)](#653-凭证分录表-acct_voucher_entry)
+    * [6.5.4 现金流量项目表 (acct_cash_flow_item)](#654-现金流量项目表-acct_cash_flow_item)
+    * [6.5.5 凭证-现金流映射表 (acct_entry_cash_flow)](#655-凭证-现金流映射表-acct_entry_cash_flow)
+    * [6.5.6 过账记录表 (acct_posting_record)](#656-过账记录表-acct_posting_record)
+    * [6.5.7 账实核对记录表 (acct_reconciliation)](#657-账实核对记录表-acct_reconciliation)
+    * [6.5.8 税务记录表 (acct_tax_record)](#658-税务记录表-acct_tax_record)
+    * [6.5.9 定期业务表 (acct_periodic_operation)](#659-定期业务表-acct_periodic_operation)
+
+[七、主界面设计](#七主界面设计)
+
+* [7.1 总体布局](#71-总体布局)
+* [7.2 工作台 (Dashboard)](#72-工作台-dashboard)
+* [7.3 基础设置 (System Settings)](#73-基础设置-system-settings)
+    * [7.3.1 企业初始化 (Company.vue)](#731-企业初始化-companyvue)
+    * [7.3.2 会计科目管理 (AccountSubject.vue)](#732-会计科目管理-accountsubjectvue)
+    * [7.3.3 员工管理 (Employee.vue)](#733-员工管理-employeevue)
+    * [7.3.4 供应商管理 (Supplier.vue)](#734-供应商管理-suppliervue)
+    * [7.3.5 客户管理 (Customer.vue)](#735-客户管理-customervue)
+* [7.4 业务管理 (Business Management)](#74-业务管理-business-management)
+    * [7.4.1 销售发票 (SalesInvoice.vue)](#741-销售发票-salesinvoicevue)
+    * [7.4.2 采购订单 (PurchaseOrder.vue)](#742-采购订单-purchaseordervue)
+    * [7.4.3 费用报销 (ExpenseClaim.vue)](#743-费用报销-expenseclaimvue)
+* [7.5 会计核算 (Accounting Core)](#75-会计核算-accounting-core)
+    * [7.5.1 凭证管理 (Voucher.vue)](#751-凭证管理-vouchervue)
+    * [7.5.2 智能过账 (Posting.vue)](#752-智能过账-postingvue)
+    * [7.5.3 对账 (Reconciliation.vue)](#753-对账-reconciliationvue)
+    * [7.5.4 定期业务 (PeriodicOperation.vue)](#754-定期业务-periodicoperationvue)
+    * [7.5.5 税务管理 (TaxRecord.vue)](#755-税务管理-taxrecordvue)
+* [7.6 财务报表 (Financial Reports)](#76-财务报表-financial-reports)
+    * [7.6.1 资产负债表 (BalanceSheet.vue)](#761-资产负债表-balancesheetvue)
+    * [7.6.2 利润表 (IncomeStatement.vue)](#762-利润表-incomestatementvue)
+    * [7.6.3 现金流量表 (CashFlow.vue)](#763-现金流量表-cashflowvue)
+
+
 
 ## 一、项目愿景
 
@@ -23,11 +153,12 @@
 | 关键指标 | 🔹 报表提速：核心报表出具周期缩短 ≥ 50%。 <br/>🔹 智能记账：标准业务单据自动过账率 ≥ 95%。 <br/>🔹 风控前置：异常数据发现时间由“月底”提前至“实时” 。 <br/>🔹 人效提升：财务人员重复录入动作减少 ≥ 70% |
 
 
+
 ## 二、业务建模
 
-### 2.1 概述
+### 2.1 系统概述
 
-FS_System 旨在为中小企业打造一套业财一体化的智能财务管理解决方案，打破业务数据（销售、采购、报销）与财务数据（凭证、账簿、报表）之间的“信息孤岛”。通过预设的会计规则引擎，系统能够将标准化的业务单据自动转化为符合会计准则的记账凭证，实现从业务发生到财务报表生成的全链路自动化，从而提升财务工作效率，确保数据的实时性与准确性。
+FS_System 是一个基于 Spring Boot 3.2 + Vue.js 3 开发的企业级财务管理解决方案，旨在为中小企业打造一套业财一体化的智能财务管理解决方案，打破业务数据（销售、采购、报销）与财务数据（凭证、账簿、报表）之间的“信息孤岛”。通过预设的会计规则引擎，系统能够将标准化的业务单据自动转化为符合会计准则的记账凭证，实现从业务发生到财务报表生成的全链路自动化，从而提升财务工作效率，确保数据的实时性与准确性。系统采用前后端分离架构，支持RESTful API，具备高可扩展性和可维护性。
 
 ### 2.2 业务角色
 
@@ -128,8 +259,6 @@ FS_System 旨在为中小企业打造一套业财一体化的智能财务管理�
 | BR-03    | 科目级次控制 | 仅允许在末级科目（Leaf Subject）上进行凭证录入与核算，父级科目仅作为汇总统计使用。 | `AccountSubjectService` |
 | BR-04    | 税务计算精度 | 税务计算采用 `BigDecimal` 进行高精度运算，税额 = 应税额 $\times$ 税率，保留两位小数。 | `TaxRecordService`      |
 | BR-05    | 自动对账逻辑 | 对账时，系统自动汇总指定日期前的所有凭证分录计算账面余额，并与银行录入余额比对，自动标记“已对账”或“差异”。 | `ReconciliationService` |
-
-------
 
 ### 2.5 总体业务用例图
 
@@ -263,8 +392,6 @@ graph TD
 | 后置条件   | 科目表更新，直接影响凭证录入的科目选择。                     |
 | 主成功场景 | 1. [获取树形/列表] 调用 `GET /account-subject/list` 获取全量科目。 <br/>2. [获取子级] 调用 `GET /account-subject/children/{parentId}` 逐级加载。 <br/>3. [记账筛选] 凭证录入界面调用 `GET /account-subject/leaf`，仅获取“启用的叶子科目”。 <br/>4. [新建/更新] 调用 `POST` 或 `PUT` 接口维护科目属性（如借贷方向、辅助核算）。 |
 
-------
-
 ### 3.2 业务管理模块
 
 #### UC-BUS-01: 销售发票全流程
@@ -302,8 +429,6 @@ graph TD
 | 前置条件   | 员工已登录。                                                 |
 | 后置条件   | 报销单状态终结为 `Approved` 或 `Rejected`。                  |
 | 主成功场景 | 1. [提交申请] 员工调用 `POST /expense` 创建草稿，随后调用 `PUT /expense/{id}/submit` 提交审批。 <br/>2. [审批通过] 审批人调用 `PUT /expense/{id}/approve`，状态变为 `Approved`，允许过账。 <br/>3. [审批拒绝] 审批人调用 `PUT /expense/{id}/reject`，并在请求体中附带 `{"reason": "..."}`。 <br/>4. 系统更新状态为 `Rejected` 并记录原因。 |
-
-------
 
 ### 3.3 总账会计核算模块
 
@@ -366,8 +491,6 @@ graph TD
 | 前置条件   | 税务数据已生成。                                             |
 | 后置条件   | 税务记录状态流转。                                           |
 | 主成功场景 | 1. [查询记录] 调用 `GET /tax/list` 获取本期税务记录。 <br/>2. [申报] 确认无误后，调用 `PUT /tax/{id}/declare`，状态变更为 `Declared`。 <br/>3. [缴纳] 实际缴款后，调用 `PUT /tax/{id}/pay`，状态变更为 `Paid`。 |
-
-------
 
 ### 3.4 财务报表模块
 
@@ -851,7 +974,7 @@ sequenceDiagram
 
 场景：录入客户档案，包含基础信息查重校验。
 
-```
+```mermaid
 sequenceDiagram
     autonumber
     actor Sales as 销售/采购
@@ -2333,3 +2456,336 @@ erDiagram
 导出交互：所有报表页均提供“导出 Excel”按钮，前端接收文件流并触发浏览器下载。
 
 ![现金流量表](image\现金流量表.png)
+
+
+
+## 八、附录
+
+### 8.1 文件结构
+
+#### 8.1.1 后端项目结构
+
+```
+backend/
+├── src/
+│   ├── main/
+│   │   ├── java/com/fs/system/
+│   │   │   ├── FsSystemApplication.java      # 启动类
+│   │   │   ├── common/                        # 公共类
+│   │   │   │   ├── BaseEntity.java           # 实体基类
+│   │   │   │   ├── PageResult.java           # 分页结果
+│   │   │   │   └── Result.java               # 统一响应
+│   │   │   ├── config/                        # 配置类
+│   │   │   │   └── CorsConfig.java           # 跨域配置
+│   │   │   ├── controller/                    # 控制器层
+│   │   │   │   ├── AccountSubjectController.java    # 科目管理
+│   │   │   │   ├── CompanyController.java           # 公司管理
+│   │   │   │   ├── EmployeeController.java          # 员工管理
+│   │   │   │   ├── CustomerController.java          # 客户管理
+│   │   │   │   ├── SupplierController.java          # 供应商管理
+│   │   │   │   ├── SalesInvoiceController.java      # 销售发票
+│   │   │   │   ├── PurchaseOrderController.java     # 采购订单
+│   │   │   │   ├── ExpenseClaimController.java      # 报销单
+│   │   │   │   ├── VoucherController.java           # 凭证管理
+│   │   │   │   ├── PostingController.java           # 过账处理
+│   │   │   │   ├── ReconciliationController.java    # 对账管理
+│   │   │   │   ├── TaxRecordController.java         # 税务记录
+│   │   │   │   ├── PeriodicOperationController.java # 期间操作
+│   │   │   │   └── ReportController.java            # 报表生成
+│   │   │   ├── entity/                        # 实体类
+│   │   │   │   ├── AccountSubject.java       # 会计科目
+│   │   │   │   ├── Company.java              # 公司
+│   │   │   │   ├── Employee.java             # 员工
+│   │   │   │   ├── Customer.java             # 客户
+│   │   │   │   ├── Supplier.java             # 供应商
+│   │   │   │   ├── SalesInvoice.java         # 销售发票
+│   │   │   │   ├── SalesInvoiceItem.java     # 销售明细
+│   │   │   │   ├── PurchaseOrder.java        # 采购订单
+│   │   │   │   ├── PurchaseOrderItem.java    # 采购明细
+│   │   │   │   ├── ExpenseClaim.java         # 报销单
+│   │   │   │   ├── ExpenseClaimItem.java     # 报销明细
+│   │   │   │   ├── Voucher.java              # 会计凭证
+│   │   │   │   ├── VoucherEntry.java         # 凭证分录
+│   │   │   │   ├── CashFlowItem.java         # 现金流量项目
+│   │   │   │   ├── PostingRecord.java        # 过账记录
+│   │   │   │   ├── Reconciliation.java       # 对账记录
+│   │   │   │   ├── TaxRecord.java            # 税务记录
+│   │   │   │   └── PeriodicOperation.java    # 期间操作
+│   │   │   ├── exception/                     # 异常处理
+│   │   │   │   ├── BusinessException.java    # 业务异常
+│   │   │   │   └── GlobalExceptionHandler.java # 全局异常处理
+│   │   │   ├── mapper/                        # 数据访问层
+│   │   │   │   ├── AccountSubjectMapper.java
+│   │   │   │   ├── CompanyMapper.java
+│   │   │   │   ├── EmployeeMapper.java
+│   │   │   │   ├── CustomerMapper.java
+│   │   │   │   ├── SupplierMapper.java
+│   │   │   │   ├── SalesInvoiceMapper.java
+│   │   │   │   ├── PurchaseOrderMapper.java
+│   │   │   │   ├── ExpenseClaimMapper.java
+│   │   │   │   ├── VoucherMapper.java
+│   │   │   │   ├── VoucherEntryMapper.java
+│   │   │   │   ├── PostingRecordMapper.java
+│   │   │   │   ├── ReconciliationMapper.java
+│   │   │   │   └── TaxRecordMapper.java
+│   │   │   └── service/                       # 业务逻辑层
+│   │   │       ├── AccountSubjectService.java
+│   │   │       ├── CompanyService.java
+│   │   │       ├── EmployeeService.java
+│   │   │       ├── CustomerService.java
+│   │   │       ├── SupplierService.java
+│   │   │       ├── SalesInvoiceService.java
+│   │   │       ├── PurchaseOrderService.java
+│   │   │       ├── ExpenseClaimService.java
+│   │   │       ├── VoucherService.java
+│   │   │       ├── PostingService.java
+│   │   │       ├── ReconciliationService.java
+│   │   │       ├── TaxRecordService.java
+│   │   │       ├── PeriodicOperationService.java
+│   │   │       └── ReportService.java
+│   │   └── resources/
+│   │       ├── application.yml                # 开发环境配置
+│   │       ├── application-prod.yml           # 生产环境配置
+│   │       └── mapper/                        # MyBatis XML映射
+│   │           ├── AccountSubjectMapper.xml
+│   │           ├── CompanyMapper.xml
+│   │           ├── EmployeeMapper.xml
+│   │           ├── CustomerMapper.xml
+│   │           ├── SupplierMapper.xml
+│   │           ├── SalesInvoiceMapper.xml
+│   │           ├── PurchaseOrderMapper.xml
+│   │           ├── ExpenseClaimMapper.xml
+│   │           ├── VoucherMapper.xml
+│   │           └── ...
+│   └── test/                                  # 测试代码
+└── pom.xml                                    # Maven依赖配置
+```
+
+#### 8.1.2 前端项目结构
+
+```
+frontend/
+├── public/                                    # 静态资源
+├── src/
+│   ├── api/                                   # API接口封装
+│   │   ├── accounting.js                     # 会计核算接口
+│   │   ├── business.js                       # 业务管理接口
+│   │   ├── report.js                         # 报表接口
+│   │   └── system.js                         # 系统管理接口
+│   ├── assets/                                # 资源文件
+│   │   └── styles/
+│   │       ├── main.scss                     # 全局样式
+│   │       └── business-common.scss          # 业务模块公共样式
+│   ├── layout/                                # 布局组件
+│   │   └── Index.vue                         # 主布局
+│   ├── router/                                # 路由配置
+│   │   └── index.js                          # 路由定义
+│   ├── utils/                                 # 工具类
+│   │   └── request.js                        # Axios封装
+│   ├── views/                                 # 页面组件
+│   │   ├── Dashboard.vue                     # 首页仪表盘
+│   │   ├── system/                           # 系统管理模块
+│   │   │   ├── AccountSubject.vue           # 科目管理
+│   │   │   ├── Company.vue                  # 公司管理
+│   │   │   ├── Employee.vue                 # 员工管理
+│   │   │   ├── Customer.vue                 # 客户管理
+│   │   │   └── Supplier.vue                 # 供应商管理
+│   │   ├── business/                         # 业务管理模块
+│   │   │   ├── SalesInvoice.vue             # 销售发票
+│   │   │   ├── PurchaseOrder.vue            # 采购订单
+│   │   │   └── ExpenseClaim.vue             # 报销单据
+│   │   ├── accounting/                       # 会计核算模块
+│   │   │   ├── Voucher.vue                  # 凭证管理
+│   │   │   ├── Posting.vue                  # 过账处理
+│   │   │   ├── Reconciliation.vue           # 对账管理
+│   │   │   ├── TaxRecord.vue                # 税务记录
+│   │   │   └── PeriodicOperation.vue        # 期间操作
+│   │   └── report/                           # 财务报表模块
+│   │       ├── BalanceSheet.vue             # 资产负债表
+│   │       ├── IncomeStatement.vue          # 利润表
+│   │       └── CashFlow.vue                 # 现金流量表
+│   ├── App.vue                                # 根组件
+│   └── main.js                                # 入口文件
+├── index.html                                 # HTML模板
+├── package.json                               # 依赖配置
+└── vite.config.js                             # Vite配置
+```
+
+#### 8.1.3 数据库脚本
+
+```
+database/
+└── fs_system.sql                              # 完整数据库建表脚本
+```
+
+### 8.2 本地快速开始
+
+#### 8.2.1 环境要求
+
+| 软件    | 版本要求 | 说明         |
+| ------- | -------- | ------------ |
+| JDK     | 21+      | Java开发环境 |
+| Node.js | 16+      | 前端运行环境 |
+| MySQL   | 8.0+     | 数据库       |
+| Maven   | 3.6+     | 后端依赖管理 |
+
+#### 8.2.2 安装步骤
+
+1. 克隆项目
+
+```bash
+git clone https://github.com/xyqcjsy/FS_System.git
+cd FS_System
+```
+
+2. 数据库初始化
+
+```bash
+# 登录MySQL
+mysql -u root -p
+
+# 创建数据库
+CREATE DATABASE fs_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+# 导入数据
+mysql -u root -p fs_system < database/fs_system.sql
+```
+
+3. 后端配置
+
+修改 `backend/src/main/resources/application.yml`：
+
+```yaml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/fs_system?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: your_password  # 修改为你的MySQL密码
+    driver-class-name: com.mysql.cj.jdbc.Driver
+```
+
+4. 启动后端
+
+```bash
+cd backend
+mvn clean install
+mvn spring-boot:run
+```
+
+后端服务启动在 `http://localhost:8080`
+
+5. 启动前端
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+前端服务启动在 `http://localhost:5173`
+
+6. 访问系统
+
+浏览器打开 `http://localhost:5173`
+
+---
+
+### 8.3 部署说明
+
+#### 8.3.1 后端打包
+
+```bash
+cd backend
+mvn clean package -DskipTests
+```
+
+生成文件：`backend/target/fs-system-1.0.0.jar`
+
+#### 8.3.2 前端打包
+
+```bash
+cd frontend
+npm run build
+```
+
+生成目录：`frontend/dist/`
+
+#### 8.3.3 生产环境部署
+
+1. 后端部署：
+
+```bash
+java -jar fs-system-1.0.0.jar --spring.profiles.active=prod
+```
+
+2. 前端部署：
+   将 `dist` 目录部署到 Nginx
+
+3. Nginx配置：
+
+```nginx
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            root   C:/fs_system/frontend/dist;
+            index  index.html index.htm;
+            try_files $uri $uri/ /index.html;
+        }
+
+        location /api/ {
+            proxy_pass http://127.0.0.1:8080;
+            
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+        
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+```
+
+
+
+## 九、关于本项目
+
+### 9.1 📄 许可证 / License
+
+MIT License
+
+Copyright (c) 2025 xyqcjsy
+
+---
+
+### 9.2 👨‍💻 关于作者
+
+开发者 / Developer: 谢扬强 (xyqcjsy)  
+学校 / Institution: 中南大学商学院 (CSU Business School)  
+专业班级 / Major: 信息管理与信息系统 2302班  
+开发时间 / Development Time: 2025年12月
+
+---
+
+### 9.3 📧 联系方式
+
+如有问题或建议，欢迎通过以下方式联系：
+
+- GitHub Issues: [提交问题](https://github.com/xyqcjsy/FS_System/issues)
+- Email: xyqcjsy@outlook.com
